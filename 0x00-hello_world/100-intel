@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -S -masm =intel $CFILE
+gcc -S -masm =intel -Wall -Wextra -pedantic -std=gnu98 $CFILE && c=$(echo $CFILE) | cut -cl && cat $c*.s > c
