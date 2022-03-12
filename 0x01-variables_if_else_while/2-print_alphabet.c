@@ -8,13 +8,15 @@
 
 int main(void)
 {
-	char a;
+	char a = 'a';
+	int n = 26;
 
-	for (a = 'a'; a <= 'z'; a++)
+	while (a < 26)
 	{
 	putchar(a);
-	putchar("\n");
-	getchar();
+	a++;
+	n++;
 	}
+	putchar('\n');
 	return (0);
 }
