@@ -9,17 +9,16 @@
 int main(void)
 {
 	int num = 48;
-	char alpha = 'a';
 
 	while (num < 58)
 	{
 	putchar(num);
-	num++;
-	}
-	while (alpha <= 'f')
+	if (num != 57)
 	{
-	putchar(alpha);
-	alpha++;
+	putchar(',');
+	putchar(' ');
+	}
+	num++;
 	}
 	putchar('\n');
 	return (0);
