@@ -10,7 +10,6 @@
  */
 int print_last_digit(int n)
 {
-	n;
 	int pld;
 
 	pld = (n % 10);
