@@ -1,17 +1,3 @@
-/*
-******************************************************************************
-*                                                                            *
-*                                                 _____  ______    ____  ___ *
-*    5-printf.c                                  /  _  \ |    |    \   \/  / *
-*                                               /  /_\  \|    |     \     /  *
-*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
-*                                              \____|__  /_______ \/___/\  \ *
-*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
-*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
-*                                                                            *
-******************************************************************************
-*/
-
 #include "main.h"
 #include<stdio.h>
 
@@ -23,29 +9,18 @@
  */
 void jack_bauer(void)
 {
-	int a = 0, b = 0, c = 0, d = 0;
-	int n = 9;
+	int h, m;
 
-	for (a = 0; a <= 2 ; a++)
+	for (h = 0; h < 24; h++)
 	{
-		if (a == 2)
-			n = 3;
-		for (b = 0; b <= n; b++)
+		for (m = 0; m < 60; m++)
 		{
-			for (c = 0; c <= 5; c++)
-			{
-				for (d = 0; d <= 9; d++)
-				{
-					_putchar(a + '0');
-					_putchar(b + '0');
-					_putchar(':');
-					_putchar(c + '0');
-					_putchar(d + '0');
-					_putchar('\n');
-				}
-			}
-
+			_putchar((h / 10) + '0');
+			_putchar((h % 10) + '0');
+			_putchar(':');
+			_putchar((m / 10) + '0');
+			_putchar((m % 10) + '0');
+			_putchar('\n');
 		}
 	}
 }
-
