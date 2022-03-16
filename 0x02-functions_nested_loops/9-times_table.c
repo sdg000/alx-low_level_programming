@@ -1,17 +1,3 @@
-/*
-******************************************************************************
-*                                                                            *
-*                                                 _____  ______    ____  ___ *
-*    5-printf.c                                  /  _  \ |    |    \   \/  / *
-*                                               /  /_\  \|    |     \     /  *
-*    By: Barahmou <hamabarhamou@gmail.com>     /    |    \    |___  /     \  *
-*                                              \____|__  /_______ \/___/\  \ *
-*    Created: 2022-03-10 13:29:43 by Barahmou          \/        \/      \_/ *
-*    Updated: 2022-03-10 13:29:43 by Barahmou                                *
-*                                                                            *
-******************************************************************************
-*/
-
 #include "main.h"
 
 /**
@@ -23,7 +9,9 @@
  */
 void times_table(void)
 {
-	int i = 0, j = 0, k;
+	int i = 0;
+	int j = 0;
+	int k;
 
 	for (i = 0; i <= 9; i++)
 	{
@@ -31,13 +19,15 @@ void times_table(void)
 		{
 			k = i * j;
 			if (k <= 9)
+			{
 				_putchar(k + '0');
+			}
 			else
 			{
 				_putchar(k / 10 + '0');
 				_putchar(k % 10 + '0');
 			}
-			
+
 			if (j < 9)
 			{
 				_putchar(',');
@@ -50,8 +40,6 @@ void times_table(void)
 					_putchar(' ');
 			}
 		}
-
 		_putchar('\n');
 	}
 }
-
