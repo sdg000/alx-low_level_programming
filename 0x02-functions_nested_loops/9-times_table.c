@@ -15,21 +15,43 @@
 #include "main.h"
 
 /**
-* main - Entry point
-*
-* Return: Always 0 (Success)
-*/
-
-int main(void)
+ *times_table - a function that prints the 9 times table, starting with 0
+ *starting from 00:00 to 23:59.
+ *
+ *Return: On success 1.
+ *On error, -1 is returned, and errno is set appropriately.
+ */
+void times_table(void)
 {
-	char chaine[] = "_putchar\n";
-	int i = 0;
+	int i = 0, j = 0, k;
 
-	while (chaine[i])
+	for (i = 0; i <= 9; i++)
 	{
-		_putchar(chaine[i]);
-		i++;
+		for (j = 0; j <= 9; j++)
+		{
+			k = i * j;
+			if (k <= 9)
+				_putchar(k + '0');
+			else
+			{
+				_putchar(k / 10 + '0');
+				_putchar(k % 10 + '0');
+			}
+			
+			if (j < 9)
+			{
+				_putchar(',');
+				if (k <= 9)
+				{
+					_putchar(' ');
+					_putchar(' ');
+				}
+				else
+					_putchar(' ');
+			}
+		}
+
+		_putchar('\n');
 	}
-	return (0);
 }
 
