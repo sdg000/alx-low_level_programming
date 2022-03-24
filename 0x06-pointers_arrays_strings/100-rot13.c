@@ -1,46 +1,28 @@
-#include<stdio.h>
-
+#include "main.h"
 /**
- * remplace13 - a function ...
- * @alpha: the chaine of caractere
- * @code: the chaine of caractere
- * @c: char
- *
- * Return: char
+ * rot13 - encodes a string using rot13
+ * @s: input string.
+ * Return: the pointer to dest.
  */
 
-char remplace13(char *alpha, char *code, char c)
+char *rot13(char *s)
 {
-	int i = 0;
+	int count = 0, i;
+	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	while (*(s + count) != '\0')
 	{
-		while (alpha[i] != c)
-			i++;
-		return (code[i]);
+		for (i = 0; i < 52; i++)
+		{
+			if (*(s + count) == alphabet[i])
+			{
+				*(s + count) = rot13[i];
+				break;
+			}
+		}
+		count++;
 	}
-	else
-		return (c);
+
+	return (s);
 }
-
-/**
- * rot13 - a function ...
- * @str: the chaine of caractere
- *
- * Return: str
- */
-
-char	*rot13(char *str)
-{
-	int i = 0;
-	char alp[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char cde[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-	while (str[i])
-	{
-		str[i] = remplace13(alp, cde, str[i]);
-		i++;
-	}
-	return (str);
-}
-
