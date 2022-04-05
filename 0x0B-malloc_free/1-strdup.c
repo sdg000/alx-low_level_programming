@@ -6,25 +6,24 @@
  * @str: char
  * Return: 0
  */
-char *_strdup(char *str)
+char  *_strdup(char *str)
 {
-	int i, end;
-	char *array;
+	char *src;
+	int len = 0, i = 0;
 
 	if (str == NULL)
 		return (NULL);
-
-	for (end = 0; end <= *str; end++)
+	while (str[len])
+		len++;
+	src = malloc((len + 1) * sizeof(char));
+	if (src != NULL)
 	{
+		while (str[i])
+		{
+			src[i] = str[i];
+			i++;
+		}
+		src[i] = '\0';
 	}
-
-	end += 1;
-	array = malloc(sizeof(char) * end);
-
-	for (i = 0; i < end; i++)
-		array[i] = str[i];
-
-	if (array == NULL)
-		return (NULL);
-	return (array);
+	return (src);
 }

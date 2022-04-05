@@ -7,39 +7,71 @@
  * @s2: input two to concat
  * Return: concat of s1 and s2
  */
-char *str_concat(char *s1, char *s2)
+int ft_strlen(char *str)
 {
-	int end1, end2, i = 0;
-	char *array;
+	int i = 0;
 
-	if (s1 == NULL || s2 == NULL)
-		s1 = s2 = "";
+	while (str[i])
+		i++;
+	return (i);
+}
 
-	for (end1 = 0; end1 <= *s1; end1++)
+/**
+* ft_strcpy - a functio
+* @src: the chaine
+*
+* Return: 1 or 0
+*/
+char *ft_strcpy(char *src)
+{
+	char *str = malloc((ft_strlen(src) + 1) * sizeof(char));
+	int i = 0;
+
+	while (src[i])
 	{
+		str[i] = src[i];
+		i++;
 	}
+	return (str);
+}
 
-	for (end2 = 0; end2 <= *s2; end2++)
-	{
-	}
+/**
+ * str_concat - a function ...
+ * @s1: the chaine
+ * @s2: the chaine
+ *
+ * Return: 1 or 0
+ */
 
-	array = malloc(sizeof(char) * (end1 + end2 + 1));
+char  *str_concat(char *s1, char *s2)
+{
+	char *src;
+	int len1 = 0, i = 0, len2 = 0, j = 0;
 
-	if (array == NULL)
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	src = malloc((len1 + len2 + 1) * sizeof(char));
+	if (src == NULL)
 		return (NULL);
-
-	while (*s1)
 	{
-		array[i] = *s1;
-		i++;
-		s1++;
-	}
+		while (s1[i])
+		{
+			src[i] = s1[i];
+			i++;
+		}
 
-	while (*s2)
-	{
-		array[i] = *s2;
-		i++;
-		s2++;
+		while (s2[j])
+		{
+			src[i] = s2[j];
+			i++;
+			j++;
+		}
+		src[i] = '\0';
 	}
-	return (array);
+	return (src);
 }
