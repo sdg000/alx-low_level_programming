@@ -7,21 +7,20 @@
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *old, *rev = NULL, *new_n;
+	listint_t *p;
+	listint_t *n;
 
-	new_n = (listint_t *) malloc(sizeof(listint_t));
-	rev = (listint_t *) malloc(sizeof(listint_t));
+	p = NULL;
+	n = NULL;
 
-	old = (*head);
-
-	while (old != NULL)
+	while (*head != NULL)
 	{
-		new_n = old->next;
-		old->next = rev;
-
-		rev = old;
-		old = new_n;
+		n = (*head)->next;
+		(*head)->next = p;
+		p = *head;
+		*head = n;
 	}
-	(*head) = rev;
-	return ((*head));
+
+	*head = p;
+	return (*head);
 }

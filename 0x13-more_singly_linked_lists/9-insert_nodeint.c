@@ -1,4 +1,7 @@
+#include <stdio.h>
 #include "lists.h"
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * insert_nodeint_at_index - entry point
@@ -9,42 +12,35 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *new_n, *curr;
-	unsigned int i = 0;
+	listint_t *new, *ptr = *head, *save;
+	unsigned int cpt = 0;
 
-	curr = (*head);
-
-	new_n = (listint_t *) malloc(sizeof(listint_t));
-	if (new_n == NULL)
+	new =  malloc(sizeof(listint_t));
+	if (new == NULL)
 		return (NULL);
-	new_n->n = n;
-	if ((*head) != NULL)
+
+	new->n = n;
+	new->next = NULL;
+
+	if (ptr == NULL || idx == 0)
 	{
-		while (curr != NULL)
-		{
-			if (idx == 0)
-			{
-				new_n->next = curr;
-				curr = new_n;
-				(*head) = curr;
-				return ((*head));
-			}
-			else if (i == idx - 1)
-			{
-				new_n->next = curr->next;
-				curr->next = new_n;
-				return (curr);
-			}
-			else if (curr->next == NULL)
-			{
-				curr->next = new_n;
-				return (curr);
-			}
-			curr = curr->next;
-			i++;
-		}
+		*head = new;
+		return (*head);
 	}
-	new_n->next = NULL;
-	(*head) = new_n;
-	return ((*head));
+
+	while (cpt != idx - 1 && ptr->next != NULL)
+	{
+		ptr = ptr->next;
+		cpt++;
+	}
+
+	if (ptr->next == NULL)
+		ptr->next = new;
+	else
+	{
+		save = ptr->next;
+		ptr->next = new;
+		new->next = save;
+	}
+	return (new);
 }
