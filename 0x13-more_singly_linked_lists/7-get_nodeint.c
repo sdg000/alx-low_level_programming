@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * get_nodeint_at_index - entry point
@@ -8,20 +9,17 @@
  */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unsigned int i = 0;
+	unsigned int num = 0;
+	listint_t *ptr = head;
 
-	listint_t *curr = head;
-
-	if (curr == NULL)
-		return (NULL);
-	/* Search a position comparing with index entry */
-	while (i != index)
+	while (num != index && ptr != NULL)
 	{
-		i++;
-		curr = curr->next;
+		num++;
+		ptr = ptr->next;
 	}
-	if (index > i)
+
+	if (ptr == NULL)
 		return (NULL);
-	/* Return position */
-	return (curr);
+	else
+		return (ptr);
 }
